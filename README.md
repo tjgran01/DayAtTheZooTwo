@@ -1,4 +1,4 @@
-# Day At The Zoo \# 2:
+# Day At The Zoo Two:
 
 Here is an implimentation of the DayAtTheZoo program, but written in Python 3.6.
 As such, you'll need at least Python 3.6 to run the thing! That can be downloaded
@@ -7,13 +7,13 @@ here.
 No external packages were used in the development of this program, but in case
 there are some issues - a `requirements.txt` file can be found in this directory.
 
-To install it - open up a terminal (or cmd for Windows), andddd.
+To install that stuff - open up a terminal (or cmd for Windows), andddd.
 
-`$ git clone {this-repo}`
+`$ git clone https://github.com/tjgran01/DayAtTheZooTwo.git`
 
 Move into the repo.
 
-`$ cd {this-repo}`
+`$ cd DayAtTheZooTwo`
 
 create a python3.x (.6 or .7 should work) virtual environment and activate the environment.
 
@@ -26,6 +26,17 @@ create a python3.x (.6 or .7 should work) virtual environment and activate the e
 Then install requirements.
 
 `$ pip install -r requirements.txt`
+
+
+## Work In Progress Documentation Here:
+
+### ZooKeeper.py
+
+The ZooKeeper() object is currently in this file.
+
+### Animal.py
+
+Every animal class is included within this file (Including the super classes.)
 
 
 ## Project Requirements (Original):
