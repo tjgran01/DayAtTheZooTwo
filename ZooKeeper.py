@@ -37,6 +37,14 @@ class ZooKeeper():
 # ---------------------- Needed for Init ---------------------------------------
 
     def generate_animal(self, type):
+        """
+        Generates an animal with a random name based on the type passed.
+        Args:
+            type[str]: The type of animal to be generated.
+        Returns
+            Animal()[object]: The animal object.
+        """
+    # Could fix this to animal_name_dict[f"{type}"].
         if type == "Dog":
             return Dog(random.choice(animal_name_dict["Dog"]))
         elif type == "Cat":
@@ -79,7 +87,6 @@ class ZooKeeper():
                 animals_under_care.append(self.generate_animal(type))
         elif generation_method == "one_of_each":
             for type in self.animal_types:
-                print("type")
                 animals_under_care.append(self.generate_animal(type))
 
         return animals_under_care
@@ -95,9 +102,12 @@ class ZooKeeper():
         care.
         """
 
-        print(f"{self.name}, the ZooKeeper is beginning his day at the Zoo.")
+        print(f"{self.name}, the Zoo Keeper, is beginning his day at the Zoo.")
         print(f"Today, {self.name} is responsible for "
               f"{self.num_ani_to_manage} different animals.")
+        print(f"Under {self.name}'s care today are:")
+        self.display_animal_attrs()
+
 
 
     def wake_up_animals(self):
@@ -107,7 +117,7 @@ class ZooKeeper():
         """
 
         print("-" * 20)
-        print(f"{self.name} performs goes to wake up the animals under his care.")
+        print(f"{self.name} goes to wake up the animals under his care.")
         for animal in self.animals_under_care:
             print("-" * 20)
             print(f"{self.name} goes to wake up, {animal.name}, the {animal.sub_type}!")
@@ -127,7 +137,6 @@ class ZooKeeper():
         print(f"{self.name} performs roll call on the animals under his care.")
         for animal in self.animals_under_care:
             print("-" * 20)
-            print(f"{animal.name} makes a noise in respose!")
             print(f"{animal.make_noise()}")
 
 
@@ -166,11 +175,11 @@ class ZooKeeper():
         """
 
         for indx, animal in enumerate(self.animals_under_care):
-            print(f"Animal #{indx + 1}")
-            print(animal.name)
-            print(animal.super_type)
-            print(animal.sub_type)
             print("-" * 20)
+            print(f"Animal #{indx + 1}")
+            print(f"Name: {animal.name}")
+            print(f"Super Type: {animal.super_type}")
+            print(f"Sub Type: {animal.sub_type}")
 
 
 
