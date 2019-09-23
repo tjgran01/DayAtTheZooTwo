@@ -114,7 +114,7 @@ class Hippo(Pachyderm):
         self.noise = "moos?"
 
     def go_to_sleep(self):
-        return f"{self.name}, the {self.sub_type}, goes into the water and dozes off."
+        return f"{self.name}, the {self.sub_type}, goes into the water, and dozes off."
 
 
 class Elephant(Pachyderm):
