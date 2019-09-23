@@ -10,16 +10,20 @@ class ZooKeeper():
         *Optional* name[str]: A name for the ZooKeeper() object.
         *Optional* num_ani_to_manage[str]: A name for the ZooKeeper() object.
     """
-    def __init__(self, name="Zane", num_ani_to_manage=26, run_day_at_zoo=False):
+    def __init__(self, name="Zane", num_ani_to_manage=26,
+                 animal_gen_method="one_of_each", run_day_at_zoo=False):
 
         # Stock Attributes here.
+        self.animal_types = ["Dog", "Cat", "Tiger", "Lion", "Wolf", "Hippo",
+                             "Elephant", "Rhino"]
         self.name = name
         self.num_ani_to_manage = num_ani_to_manage
-        self.animal_types = ["Dog", "Cat", "Tiger", "Lyon", "Wolf", "Hippo"
-                             "Elephant", "Rhino"]
+        if animal_gen_method == "one_of_each":
+            self.num_ani_to_manage = len(self.animal_types)
+
 
         # Method generated attributes here.
-        self.animals_under_care = self.generate_animal_roster()
+        self.animals_under_care = self.generate_animal_roster(generation_method=animal_gen_method)
 
         # If you want to run DayAtTheZoo directly without external script.
         if run_day_at_zoo:
@@ -32,7 +36,29 @@ class ZooKeeper():
 
 # ---------------------- Needed for Init ---------------------------------------
 
-    def generate_animal_roster(self):
+    def generate_animal(self, type):
+        if type == "Dog":
+            return Dog(random.choice(animal_name_dict["Dog"]))
+        elif type == "Cat":
+            return Cat(random.choice(animal_name_dict["Dog"]))
+        elif type == "Lion":
+            return Lion(random.choice(animal_name_dict["Lion"]))
+        elif type == "Tiger":
+            return Tiger(random.choice(animal_name_dict["Tiger"]))
+        elif type == "Wolf":
+            return Wolf(random.choice(animal_name_dict["Wolf"]))
+        elif type == "Hippo":
+            return Hippo(random.choice(animal_name_dict["Hippo"]))
+        elif type == "Elephant":
+            return Elephant(random.choice(animal_name_dict["Elephant"]))
+        elif type == "Rhino":
+            return Rhino(random.choice(animal_name_dict["Rhino"]))
+        else:
+            raise TypeError(f"Type of animal {type} does not currently exist.")
+
+
+
+    def generate_animal_roster(self, generation_method="one_of_each"):
         """
         Creates the Animals that are under the ZooKeepers() care for the day.
 
@@ -47,29 +73,14 @@ class ZooKeeper():
         """
 
         animals_under_care = []
-        for animal in range(self.num_ani_to_manage):
-            # Stop this from being random at some point.
-            type = random.choice(self.animal_types)
-
-            if type == "Dog":
-                animals_under_care.append(Dog(random.choice(animal_name_dict["Dog"])))
-            elif type == "Cat":
-                animals_under_care.append(Cat(random.choice(animal_name_dict["Dog"])))
-            elif type == "Lion":
-                animals_under_care.append(Lion(random.choice(animal_name_dict["Lion"])))
-            elif type == "Tiger":
-                animals_under_care.append(Lion(random.choice(animal_name_dict["Tiger"])))
-            elif type == "Wolf":
-                animals_under_care.append(Wolf(random.choice(animal_name_dict["Wolf"])))
-            elif type == "Hippo":
-                animals_under_care.append(Hippo(random.choice(animal_name_dict["Hippo"])))
-            elif type == "Elephant":
-                animals_under_care.append(Elephant(random.choice(animal_name_dict["Elephant"])))
-            elif type == "Rhino":
-                animals_under_care.append(Rhino(random.choice(animal_name_dict["Rhino"])))
-
-            else:
-                pass
+        if generation_method == "number_rand":
+            for animal in range(self.num_ani_to_manage):
+                type = random.choice(self.animal_types)
+                animals_under_care.append(self.generate_animal(type))
+        elif generation_method == "one_of_each":
+            for type in self.animal_types:
+                print("type")
+                animals_under_care.append(self.generate_animal(type))
 
         return animals_under_care
 

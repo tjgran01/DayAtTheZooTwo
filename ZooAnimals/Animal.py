@@ -4,7 +4,7 @@ class Animal():
     """Primary Animal Class"""
     def __init__(self, name):
         self.name = name
-        self.noise = "snickers"
+        self.noise = "lets out an unearthy scream"
 
 
     def wake_up(self):
@@ -31,6 +31,7 @@ class Feline(Animal):
         self.super_type = "Feline"
 
 
+    # Overriding Animal() method.
     def go_to_sleep(self):
         return f"{self.name} finds the most comfy spot, donuts, and passes out."
 
@@ -41,7 +42,7 @@ class Cat(Feline):
         self.sub_type = "Cat"
         self.noise = 'meows'
 
-    # Overriding parent method
+    # Overriding Animal() method
     def make_noise(self):
 
         cat_choice = random.choice(["hair_ball", "make_noise", ""])
@@ -80,6 +81,9 @@ class Canine(Animal):
         super(Canine, self).__init__(name)
         self.super_type = "Canine"
 
+    def go_to_sleep(self):
+        return f"{self.name} makes a sad whimper, then lays down."
+
 
 class Dog(Canine):
     def __init__(self, name):
@@ -95,7 +99,7 @@ class Wolf(Canine):
         self.noise = "yips"
 
 
-# -------------------------------- Pachyderms
+# -------------------------------- Pachyderms --------------
 
 class Pachyderm(Animal):
     def __init__(self, name):
@@ -108,6 +112,9 @@ class Hippo(Pachyderm):
         super(Hippo, self).__init__(name)
         self.sub_type = "Hippo"
         self.noise = "moos?"
+
+    def go_to_sleep(self):
+        return f"{self.name}, the {self.sub_type} goes into the water and dozes off."
 
 
 class Elephant(Pachyderm):
