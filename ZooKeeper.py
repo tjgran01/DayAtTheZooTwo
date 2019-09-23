@@ -32,19 +32,6 @@ class ZooKeeper():
 
 # ---------------------- Needed for Init ---------------------------------------
 
-    def day_begins(self):
-
-        """
-        Prints messages to the user about the ZooKeeper()'s name.
-        And also tells the user how many Animals() are under the ZooKeepers()
-        care.
-        """
-
-        print(f"{self.name}, the ZooKeeper is beginning his day at the Zoo.")
-        print(f"Today, {self.name} is responsible for "
-              f"{self.num_ani_to_manage} different animals.")
-
-
     def generate_animal_roster(self):
         """
         Creates the Animals that are under the ZooKeepers() care for the day.
@@ -89,7 +76,24 @@ class ZooKeeper():
 
 # -------------------------------- Used for running DayAtTheZoo ----------------
 
+
+    def day_begins(self):
+        """
+        Prints messages to the user about the ZooKeeper()'s name.
+        And also tells the user how many Animals() are under the ZooKeepers()
+        care.
+        """
+
+        print(f"{self.name}, the ZooKeeper is beginning his day at the Zoo.")
+        print(f"Today, {self.name} is responsible for "
+              f"{self.num_ani_to_manage} different animals.")
+
+
     def wake_up_animals(self):
+        """
+        Prints a message and then calls all of the animals in self.animals_under_care's
+        wake_up() method and prints the result.
+        """
 
         print("-" * 20)
         print(f"{self.name} performs goes to wake up the animals under his care.")
@@ -100,6 +104,13 @@ class ZooKeeper():
 
 
     def perform_roll_call(self):
+        """
+        Prints a message and then calls all of the animals in self.animals_under_care's
+        make_noise() method and prints the result.
+
+        ***The Cat()'s make_noise method is overridden and sometime the cat (66%) of
+        the time will yak up a hairball instead.
+        """
 
         print("-" * 20)
         print(f"{self.name} performs roll call on the animals under his care.")
@@ -110,6 +121,10 @@ class ZooKeeper():
 
 
     def exercise_animals(self):
+        """
+        Prints a message and then calls all of the animals in self.animals_under_care's
+        roam() method and prints the result.
+        """
 
         print("-" * 20)
         print(f"{self.name} helps the animals pump some iron (work out).")
@@ -119,6 +134,10 @@ class ZooKeeper():
 
 
     def shut_down_the_zoo(self):
+        """
+        Prints a message and then calls all of the animals in self.animals_under_care's
+        roam() method and prints the result.
+        """
 
         print("-" * 20)
         print(f"{self.name} begins closing the zoo, and putting the animals to bed.")
@@ -133,7 +152,6 @@ class ZooKeeper():
         """
         Displays name, super_type, and sub_type attributes of each animal
         within the ZooKeeper()'s care.
-
         """
 
         for indx, animal in enumerate(self.animals_under_care):
