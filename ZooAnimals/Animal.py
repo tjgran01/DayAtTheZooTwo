@@ -11,13 +11,16 @@ class Animal():
         return f"I, {self.name}, have had a lovely nap. I am now awake."
 
     def make_noise(self):
-        return f"{self.name}: opens their mouth and exclaims {self.noise}."
+        return f"{self.name}: opens their mouth and {self.noise}."
 
     def eat_food(self, food_type="beans and rice"):
         return f"{self.name} goes and mows down on some {food_type}."
 
     def roam(self):
         return f"{self.name} wanders around aimlessly."
+
+    def go_to_sleep(self):
+        return f"{self.name} nods off and catches some zs."
 
 
 # ------------------ Felines ---------------------
@@ -26,6 +29,10 @@ class Feline(Animal):
     def __init__(self, name):
         super(Feline, self).__init__(name)
         self.super_type = "Feline"
+
+
+    def go_to_sleep(self):
+        return f"{self.name} finds the most comfy spot, donuts, and passes out."
 
 
 class Cat(Feline):
@@ -40,15 +47,15 @@ class Cat(Feline):
         cat_choice = random.choice(["hair_ball", "make_noise", ""])
 
         if cat_choice != "make_noise":
-            self.hair_ball()
+            return self.hair_ball()
         else:
             print(f"{self.name} decides to play along.")
-            print(super(Feline, self).make_noise())
+            return super(Feline, self).make_noise()
 
 
     def hair_ball(self):
 
-        print(f"{self.name} yaks up a hair ball instead.")
+        return f"{self.name} yaks up a hair ball instead."
 
 
 class Lion(Feline):

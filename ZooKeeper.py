@@ -23,12 +23,17 @@ class ZooKeeper():
 
         # If you want to run DayAtTheZoo directly without external script.
         if run_day_at_zoo:
-            pass
+            self.day_begins()
+            self.wake_up_animals()
+            self.perform_roll_call()
+            self.exercise_animals()
+            self.shut_down_the_zoo()
 
 
 # ---------------------- Needed for Init ---------------------------------------
 
     def day_begins(self):
+
         """
         Prints messages to the user about the ZooKeeper()'s name.
         And also tells the user how many Animals() are under the ZooKeepers()
@@ -82,6 +87,45 @@ class ZooKeeper():
         return animals_under_care
 
 
+# -------------------------------- Used for running DayAtTheZoo ----------------
+
+    def wake_up_animals(self):
+
+        print("-" * 20)
+        print(f"{self.name} performs goes to wake up the animals under his care.")
+        for animal in self.animals_under_care:
+            print("-" * 20)
+            print(f"{self.name} goes to wake up, {animal.name}, the {animal.sub_type}!")
+            print(animal.wake_up())
+
+
+    def perform_roll_call(self):
+
+        print("-" * 20)
+        print(f"{self.name} performs roll call on the animals under his care.")
+        for animal in self.animals_under_care:
+            print("-" * 20)
+            print(f"{animal.name} makes a noise in respose!")
+            print(f"{animal.make_noise()}")
+
+
+    def exercise_animals(self):
+
+        print("-" * 20)
+        print(f"{self.name} helps the animals pump some iron (work out).")
+        for animal in self.animals_under_care:
+            print("-" * 20)
+            print(f"{animal.roam()}")
+
+
+    def shut_down_the_zoo(self):
+
+        print("-" * 20)
+        print(f"{self.name} begins closing the zoo, and putting the animals to bed.")
+        for animal in self.animals_under_care:
+            print("-" * 20)
+            print(f"{animal.go_to_sleep()}")
+
 # -------------------------------- Used for debugging --------------------------
 
 
@@ -101,5 +145,4 @@ class ZooKeeper():
 
 
 
-zane = ZooKeeper("Zane")
-zane.display_animal_attrs()
+zane = ZooKeeper("Zane", run_day_at_zoo=True)
