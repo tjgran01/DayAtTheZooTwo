@@ -8,19 +8,19 @@ class Animal():
 
 
     def wake_up(self):
-        return f"I, {self.name}, have had a lovely nap. I am now awake."
+        return f"I, {self.name}, the {self.sub_type}, have had a lovely nap. I am now awake."
 
     def make_noise(self):
-        return f"{self.name}: opens their mouth and {self.noise}."
+        return f"{self.name}, the {self.sub_type}, opens their mouth and {self.noise}."
 
     def eat_food(self, food_type="beans and rice"):
-        return f"{self.name} goes and mows down on some {food_type}."
+        return f"{self.name}, the {self.sub_type}, goes and mows down on some {food_type}."
 
     def roam(self):
-        return f"{self.name} wanders around aimlessly."
+        return f"{self.name}, the {self.sub_type}, wanders around aimlessly."
 
     def go_to_sleep(self):
-        return f"{self.name} nods off and catches some zs."
+        return f"{self.name}, the {self.sub_type}, nods off and catches some zs."
 
 
 # ------------------ Felines ---------------------
@@ -33,7 +33,7 @@ class Feline(Animal):
 
     # Overriding Animal() method.
     def go_to_sleep(self):
-        return f"{self.name} finds the most comfy spot, donuts, and passes out."
+        return f"{self.name}, the {self.sub_type}, finds the most comfy spot, donuts, and passes out."
 
 
 class Cat(Feline):
@@ -50,13 +50,13 @@ class Cat(Feline):
         if cat_choice != "make_noise":
             return self.hair_ball()
         else:
-            print(f"{self.name} decides to play along.")
+            print(f"{self.name}, the {self.sub_type}, decides to play along.")
             return super(Feline, self).make_noise()
 
 
     def hair_ball(self):
 
-        return f"{self.name} yaks up a hair ball instead."
+        return f"{self.name}, the {self.sub_type}, yaks up a hair ball instead."
 
 
 class Lion(Feline):
@@ -82,7 +82,7 @@ class Canine(Animal):
         self.super_type = "Canine"
 
     def go_to_sleep(self):
-        return f"{self.name} makes a sad whimper, then lays down."
+        return f"{self.name}, the {self.sub_type}, makes a sad whimper and then lays down."
 
 
 class Dog(Canine):
@@ -114,7 +114,7 @@ class Hippo(Pachyderm):
         self.noise = "moos?"
 
     def go_to_sleep(self):
-        return f"{self.name}, the {self.sub_type} goes into the water and dozes off."
+        return f"{self.name}, the {self.sub_type}, goes into the water and dozes off."
 
 
 class Elephant(Pachyderm):
