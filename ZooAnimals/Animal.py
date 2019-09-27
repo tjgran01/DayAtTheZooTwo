@@ -10,7 +10,6 @@ class Animal():
         self.wake_behavior = "rested"
 
     def wake_up(self):
-        print(self.wake_behavior)
         self.wake_behav_obj = WakeUpBehavior(self.wake_behavior)
         return self.wake_behav_obj.wake_up(self.name, self.sub_type)
 

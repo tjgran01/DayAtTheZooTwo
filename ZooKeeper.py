@@ -1,5 +1,6 @@
 from ZooAnimals.AnimalFactory import AnimalFactory
 from ZooAnimals.WakeUpBehavior import WakeUpBehavior
+from ZooAnnouncer import ZooAnnouncer
 
 class ZooKeeper():
     """
@@ -14,6 +15,8 @@ class ZooKeeper():
         self.animal_factory = AnimalFactory(gen_method="one_of_each")
         # Strategy Pattern
         self.wake_uper = WakeUpBehavior()
+        # Observer Pattern
+        self.observers = [ZooAnnouncer("Zooey")]
 
         # Method generated attributes here.
         self.animals_under_care = self.animal_factory.generate_animal_roster()
@@ -23,15 +26,24 @@ class ZooKeeper():
         if run_day_at_zoo:
             # OH MY, ZooKeepers() can wake up too.
             print(self.wake_uper.wake_up(name))
+
+            # --------------- Animal Stuff Here.
+            self.broadcast_event(f"{self.name} is here everyone!")
             self.day_begins()
+            self.broadcast_event(f"{self.name} is waking all the animals up! Check it out!")
             self.wake_up_animals()
+            self.broadcast_event(f"{self.name} is now making sure all the animals are good to go!")
             self.perform_roll_call()
+            self.broadcast_event(f"{self.name} is now running all those bad boys (and girls) around")
             self.exercise_animals()
+            self.broadcast_event(f"{self.name} is about to feed them all! How cute.")
+            self.feed_animals()
+            self.broadcast_event(f"{self.name} is now going to put all the animals to bed. What a lovely day.")
             self.shut_down_the_zoo()
 
 
-# -------------------------------- Used for running DayAtTheZoo ----------------
 
+# -------------------------------- Used for running DayAtTheZoo ----------------
 
     def day_begins(self):
         """
@@ -42,9 +54,10 @@ class ZooKeeper():
 
         print(f"{self.name}, the Zoo Keeper, is beginning his day at the Zoo.")
         print(f"Today, {self.name} is responsible for "
-              f"{self.num_animals_in_care} different animals.")
+              f"{self.num_animals_in_care} differenttalker animals.")
         print(f"Under {self.name}'s care today are:")
         self.display_animal_attrs()
+        return f"{self.name} has made it to the zoo! OH golly folks."
 
 
     def wake_up_animals(self):
@@ -60,6 +73,7 @@ class ZooKeeper():
             print("-" * 20)
             print(f"{self.name} goes to wake up, {animal.name}, the {animal.sub_type}!")
             print(animal.wake_up())
+
 
 
     def perform_roll_call(self):
@@ -90,6 +104,20 @@ class ZooKeeper():
             print("-" * 20)
             print(f"{animal.roam()}")
 
+    def feed_animals(self):
+        """
+        Prints a message and then calls all of the animals in self.animals_under_care's
+        eat_food() method and prints the result.
+        """
+        print("-" * 20)
+        print(f"{self.name} is now going to feed all the animals.")
+        for animal in self.animals_under_care:
+            print("-" * 20)
+            print(f"{animal.eat_food()}")
+
+
+
+
 
     def shut_down_the_zoo(self):
         """
@@ -102,6 +130,24 @@ class ZooKeeper():
         for animal in self.animals_under_care:
             print("-" * 20)
             print(f"{animal.go_to_sleep()}")
+
+
+# -------------------------------- Used for OBSERVER Pattern -------------------
+
+    def broadcast_event(self, event):
+
+        for observer in self.observers:
+            observer.announce(event)
+
+
+    def add_observer(self, observer):
+        self.observers.append(observer)
+
+
+    def remove_observer(self, observer):
+        self.observers.remove(observer)
+
+
 
 # -------------------------------- Used for debugging --------------------------
 
@@ -118,6 +164,8 @@ class ZooKeeper():
             print(f"Name: {animal.name}")
             print(f"Super Type: {animal.super_type}")
             print(f"Sub Type: {animal.sub_type}")
+
+
 
 
 
