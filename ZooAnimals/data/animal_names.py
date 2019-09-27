@@ -8,3 +8,14 @@ animal_name_dict = {
                     "Elephant": ["Emily", "Emil", "Eric", "Erica"],
                     "Hippo": ["Henry", "Helen", "Heather", "Hector"]
                    }
+
+wake_behavior_dict = {
+                     "Dog": ["rested", "energized"],
+                     "Cat": ["grumpy", "rested"],
+                     "Wolf": ["energized", "scared"],
+                     "Lion": ["grumpy", "rested"],
+                     "Tiger": ["grumpy", "energized"],
+                     "Rhino": ["rested"],
+                     "Elephant": ["rested"],
+                     "Hippo": ["rested", "grumpy"]
+                    }

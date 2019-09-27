@@ -1,4 +1,5 @@
-from ZooAnimals.AnimalGenerator import AnimalGenerator
+from ZooAnimals.AnimalFactory import AnimalFactory
+from ZooAnimals.WakeUpBehavior import WakeUpBehavior
 
 class ZooKeeper():
     """
@@ -9,14 +10,19 @@ class ZooKeeper():
     """
     def __init__(self, name="Zane", run_day_at_zoo=False):
         self.name = name
-        self.animal_generator = AnimalGenerator(gen_method="one_of_each")
+        # Factory Pattern
+        self.animal_factory = AnimalFactory(gen_method="one_of_each")
+        # Strategy Pattern
+        self.wake_uper = WakeUpBehavior()
 
         # Method generated attributes here.
-        self.animals_under_care = self.animal_generator.generate_animal_roster()
+        self.animals_under_care = self.animal_factory.generate_animal_roster()
         self.num_animals_in_care = len(self.animals_under_care)
 
         # If you want to run DayAtTheZoo directly without external script.
         if run_day_at_zoo:
+            # OH MY, ZooKeepers() can wake up too.
+            print(self.wake_uper.wake_up(name))
             self.day_begins()
             self.wake_up_animals()
             self.perform_roll_call()
@@ -49,6 +55,7 @@ class ZooKeeper():
 
         print("-" * 20)
         print(f"{self.name} goes to wake up the animals under his care.")
+        self.animal_factory.set_wake_behaviors(self.animals_under_care)
         for animal in self.animals_under_care:
             print("-" * 20)
             print(f"{self.name} goes to wake up, {animal.name}, the {animal.sub_type}!")

@@ -1,14 +1,18 @@
 import random
 
+from ZooAnimals.WakeUpBehavior import WakeUpBehavior
+
 class Animal():
     """Primary Animal Class"""
     def __init__(self, name):
         self.name = name
         self.noise = "lets out an unearthy scream"
-
+        self.wake_behavior = "rested"
 
     def wake_up(self):
-        return f"I, {self.name}, the {self.sub_type}, have had a lovely nap. I am now awake."
+        print(self.wake_behavior)
+        self.wake_behav_obj = WakeUpBehavior(self.wake_behavior)
+        return self.wake_behav_obj.wake_up(self.name, self.sub_type)
 
     def make_noise(self):
         return f"{self.name}, the {self.sub_type}, opens their mouth and {self.noise}."
@@ -21,7 +25,6 @@ class Animal():
 
     def go_to_sleep(self):
         return f"{self.name}, the {self.sub_type}, nods off and catches some zs."
-
 
 # ------------------ Felines ---------------------
 

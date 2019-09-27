@@ -1,9 +1,17 @@
-from ZooAnimals.data.animal_names import animal_name_dict
+from ZooAnimals.data.animal_names import animal_name_dict, wake_behavior_dict
 from ZooAnimals.Animal import *
 import random
 
-class AnimalGenerator():
+class AnimalFactory():
     def __init__(self, gen_method="one_of_each", num_animals=1):
+        """A Class who returns either an Animal() object or a list of
+        Animal() objects.
+        Args:
+            *Optional* gen_method [str]: String value for parameter for
+            animal generation ('one_of_each', 'number_rand')"
+            *Optional* num_animals: Number of animals to generate IF
+            gen_method set to None or 'number'.
+        """
 
         self.num_animals = num_animals
         self.animal_types = list(animal_name_dict.keys())
@@ -21,6 +29,7 @@ class AnimalGenerator():
             Animal()[object]: The animal object.
         """
     # Could fix this to animal_name_dict[f"{type}"].
+
         if type == "Dog":
             return Dog(random.choice(animal_name_dict["Dog"]))
         elif type == "Cat":
@@ -38,7 +47,7 @@ class AnimalGenerator():
         elif type == "Rhino":
             return Rhino(random.choice(animal_name_dict["Rhino"]))
         else:
-            raise TypeError(f"Type of animal {type} does not currently exist.")
+            raise TypeError(f"Type of animal: {type} does not currently exist.")
 
 
 
@@ -56,13 +65,23 @@ class AnimalGenerator():
             for.
         """
 
-        animals_under_care = []
+        animals = []
         if self.gen_method == "number_rand":
-            for animal in range(self.num_ani_to_manage):
+            for animal in range(self.num_animals):
                 type = random.choice(self.animal_types)
-                animals_under_care.append(self.generate_animal(type))
+                animals.append(self.generate_animal(type))
         elif self.gen_method == "one_of_each":
             for type in self.animal_types:
-                animals_under_care.append(self.generate_animal(type))
+                animals.append(self.generate_animal(type))
 
-        return animals_under_care
+        return animals
+
+
+    def set_wake_behaviors(self, animals):
+        """Sets a value for each of the animals wake behaviors according to
+        the values listed within their dictionary entries.
+
+        """
+
+        for animal in animals:
+            animal.wake_behavior = random.choice(wake_behavior_dict[f"{animal.sub_type}"])
