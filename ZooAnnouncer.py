@@ -1,8 +1,12 @@
 class ZooAnnouncer():
+    """
+    ZooAnnouncer() object is an observer of ZooKeeper(). Whenever the
+    ZooKeeper() broadcasts a message out, the ZooAnnouncer object can
+    format the message and print it to the console.
+    """
     def __init__(self, name="Zelda"):
         self.name = name
         self.announce(f"Zookeeper {self.name} here! Enjoy the Zoo!")
-
 
 
     def make_typeface_annoying(self, announcement):
@@ -19,6 +23,7 @@ class ZooAnnouncer():
 
 
     def announce(self, event):
+        """Prints a message from the ZoOaNnOuNcEr"""
 
         print("-!" * 20)
         print(f"ZoOaNnOuNcEr hErE!: {self.make_typeface_annoying(event)}")

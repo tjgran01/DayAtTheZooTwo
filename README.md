@@ -28,15 +28,32 @@ Then install requirements.
 `$ pip install -r requirements.txt`
 
 
-## Work In Progress Documentation Here:
+## Documentation Here:
+
+*Note: The requirements for the adaptations for project 2 are* **in bold** *within the text below*
 
 ### ZooKeeper.py
 
-The ZooKeeper() object is currently in this file.
+The `Zooset_wake_behaviorsKeeper()` class is currently in this file. The `ZooKeeper()` is **an observable** that is responsible for taking care of all of the animals in
+the zoo. The `ZooKeeper()` has a name, and an optional boolean argument to run the day at the zoo program (`run_day_at_zoo`), which is set to `False` by default.
+
+ The `ZooKeeper()` first uses the `AnimalFactory()` class to instantiate a list of `Animal()` objects under his/her supervision.
+
+ The `ZooKeeper()` wakes up in the morning (this behavior is delegated to the `WakeUpBehavior()` class, using **the strategy pattern**, as animals also use this behavior), and has the methods available to take care of the animals throughout the day.
+
+### ZooAnnouncer.py
+
+This file contains the ZooAnnouncer() class. The class is **an observer** of the
+ZooKeeper() class. This Whenever the ZooKeeper() broadcasts a message out, the ZooAnnouncer object can
+format the message and print it to the console.
 
 ### Animal.py
 
-Every animal class is included within this file (Including the super classes.)
+Every animal class is included within this file (at all levels of inheritance). There is a behavior included in each level of inheritance for all animal classes. The `Animal()` superclass delegates one of it's behaviors to the `WakeUpBehavior()` class, using **the strategy pattern**.
+
+### AnimalFactory.py
+
+The `AnimalFactory()` class lives in this file. This class is able to instantiate object instances of the `Animal()` class. There is also a method (`set_wake_behaviors()`) that can set the wake_behavior of each `Animal()` object passed to it.
 
 
 ## Project Requirements (Original):
