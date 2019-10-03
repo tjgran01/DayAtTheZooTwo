@@ -6,8 +6,21 @@ class ZooAnnouncer():
     """
     def __init__(self, name="Zelda"):
         self.name = name
+        self.currently_observing = []
         self.announce(f"Zookeeper {self.name} here! Enjoy the Zoo!")
 
+
+    def observe_keeper(self, zookeeper):
+
+        zookeeper.add_observer(self)
+        self.currently_observing.append(zookeeper)
+
+
+    def cease_observing_keeper(self, zookeeper):
+
+        zookeeper.remove_observer(self)
+        self.currently_observing.remove(zookeeper)
+        
 
     def make_typeface_annoying(self, announcement):
         """MaKeS ThInGs lOoK LiKe ThIs."""

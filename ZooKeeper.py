@@ -1,6 +1,6 @@
 from ZooAnimals.AnimalFactory import AnimalFactory
+# ZooKeepers also have to wake up.
 from ZooAnimals.WakeUpBehavior import WakeUpBehavior
-from ZooAnnouncer import ZooAnnouncer
 
 class ZooKeeper():
     """
@@ -16,7 +16,7 @@ class ZooKeeper():
         # Strategy Pattern
         self.wake_uper = WakeUpBehavior()
         # Observer Pattern
-        self.observers = [ZooAnnouncer("Zooey")]
+        self.observers = []
 
         # Method generated attributes here.
         self.animals_under_care = self.animal_factory.generate_animal_roster()
@@ -114,9 +114,6 @@ class ZooKeeper():
         for animal in self.animals_under_care:
             print("-" * 20)
             print(f"{animal.eat_food()}")
-
-
-
 
 
     def shut_down_the_zoo(self):

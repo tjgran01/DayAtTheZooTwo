@@ -78,9 +78,9 @@ class AnimalFactory():
 
 
     def set_wake_behaviors(self, animals):
-        """Sets a value for each of the animals wake behaviors according to
+        """
+        Sets a value for each of the animals wake behaviors according to
         the values listed within their dictionary entries.
-
         """
 
         for animal in animals:

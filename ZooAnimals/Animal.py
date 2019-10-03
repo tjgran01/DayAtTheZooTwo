@@ -10,6 +10,7 @@ class Animal():
         self.wake_behavior = "rested"
 
     def wake_up(self):
+        # WakeUpBehavior is delegated to WakeUpBehavior() class using Strategy
         self.wake_behav_obj = WakeUpBehavior(self.wake_behavior)
         return self.wake_behav_obj.wake_up(self.name, self.sub_type)
 
@@ -47,6 +48,7 @@ class Cat(Feline):
     # Overriding Animal() method
     def make_noise(self):
 
+        # Empty string used to make probability of hair_ball .66
         cat_choice = random.choice(["hair_ball", "make_noise", ""])
 
         if cat_choice != "make_noise":

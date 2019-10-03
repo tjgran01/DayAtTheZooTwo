@@ -34,8 +34,8 @@ Then install requirements.
 
 ### ZooKeeper.py
 
-The `Zooset_wake_behaviorsKeeper()` class is currently in this file. The `ZooKeeper()` is **an observable** that is responsible for taking care of all of the animals in
-the zoo. The `ZooKeeper()` has a name, and an optional boolean argument to run the day at the zoo program (`run_day_at_zoo`), which is set to `False` by default.
+The `ZooKeeper()` class is currently in this file. The `ZooKeeper()` is **an observable** that is responsible for taking care of all of the animals in
+the zoo. The `ZooKeeper()` can be passed a name (default is 'Zane'), and an optional boolean argument to run the day at the zoo program (`run_day_at_zoo`), which is set to `False` by default.
 
  The `ZooKeeper()` first uses the `AnimalFactory()` class to instantiate a list of `Animal()` objects under his/her supervision.
 
