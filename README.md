@@ -32,6 +32,10 @@ Then install requirements.
 
 *Note: The requirements for the adaptations for project 2 are* **in bold** *within the text below*
 
+### DayAtTheZoo.py
+
+Runs the Day at the Zoo Program. Output can be found in `./outfiles/DayAtTheZoo.out`
+
 ### ZooKeeper.py
 
 The `ZooKeeper()` class is currently in this file. The `ZooKeeper()` is **an observable** that is responsible for taking care of all of the animals in
